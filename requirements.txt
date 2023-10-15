@@ -1,0 +1,2 @@
+pycryptodome
+sagemath-standard
