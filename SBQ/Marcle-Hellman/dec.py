@@ -6,7 +6,7 @@ key_frase = 'CyberQuest{'
 key_bin = ''
 for c in key_frase:
     key_bin += '%08d' % (int(bin(ord(c))[2:]))
-    
+print('%08d' % (int(bin('C')[2:])))
 print(len(key_bin))
 is_using = [0] * len(w)
 my_c = 0

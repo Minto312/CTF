@@ -3,7 +3,7 @@
 
 # CyberQuest 2021 二次予選：crypto：Marcle-Hellmanナップサック暗号
 from random import randint
-from secret import flag, p
+# from secret import flag, p
 
 
 def main():
@@ -18,7 +18,6 @@ def main():
         w.append(randint(sum(w[:i]) + 1, w[-1] * 3))
     w = [n % p for n in w]
     print('p =', p)
-    print('w =', w)
 
     c = 0
     # print(fb)
@@ -27,7 +26,11 @@ def main():
         c %= p
         # print(c)
     print('c =', c)
+    for i,j in zip(w,fb):
+        print(f'{i}  -  {j}')
 
 
 if __name__ == '__main__':
+    flag = 'CyberQuest{}'
+    p = 2021110809000000000000000000000000000000000000000000000000283
     main()
