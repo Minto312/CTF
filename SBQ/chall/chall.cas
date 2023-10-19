@@ -1,0 +1,94 @@
+;
+; HSCTF 2021 予選：binary：CASL II
+;
+CHALL    START
+         OUT   INFLAGM,INFLAGML
+         IN    FLAG,FLAGL
+;
+         LD    GR1,FLAGL
+         XOR   GR1,CHECKL
+         JNZ   WRONG
+;
+         LD    GR1,=0
+LOOP     LD    GR0,FLAG,GR1
+         XOR   GR0,XORN
+         LD    GR2,CHECK,GR1
+         XOR   GR0,GR2
+         JNZ   WRONG
+         LAD   GR1,1,GR1
+         CPA   GR1,FLAGL
+         JMI   LOOP
+         OUT   CORECTM,CORECTML
+         RET
+WRONG    OUT   WRONGM,WRONGML
+         RET
+;
+INFLAGM  DC    'Input your FLAG: '
+INFLAGML DC    17
+FLAG     DS    256
+FLAGL    DS    1
+CORECTM  DC    'Correct FLAG.'
+CORECTML DC    13
+WRONGM   DC    'Wrong FLAG.'
+WRONGML  DC    11
+CHECK    DC    246
+         DC    204
+         DC    215
+         DC    208
+         DC    199
+         DC    228
+         DC    192
+         DC    208
+         DC    198
+         DC    193
+         DC    206
+         DC    253
+         DC    216
+         DC    216
+         DC    216
+         DC    216
+         DC    216
+         DC    216
+         DC    216
+         DC    234
+         DC    253
+         DC    212
+         DC    217
+         DC    217
+         DC    208
+         DC    204
+         DC    234
+         DC    240
+         DC    219
+         DC    214
+         DC    222
+         DC    208
+         DC    234
+         DC    246
+         DC    199
+         DC    218
+         DC    216
+         DC    216
+         DC    208
+         DC    217
+         DC    220
+         DC    219
+         DC    234
+         DC    220
+         DC    198
+         DC    234
+         DC    219
+         DC    218
+         DC    193
+         DC    234
+         DC    246
+         DC    250
+         DC    248
+         DC    240
+         DC    225
+         DC    252
+         DC    252
+         DC    200
+CHECKL   DC    58
+XORN     DC    #b5
+         END
