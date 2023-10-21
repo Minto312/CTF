@@ -11,66 +11,42 @@ for i, _w in enumerate(w_pub):
         _w += p_secret
         current_multipul += 1
     my_w.append(_w)
+    assert my_w[-1] > sum(my_w[:-2])
+    if len(my_w) > 2:
+        assert my_w[-1] <= my_w[-2] * 3
     key_sum += _w
-key_sum = 0
-for i in my_w:
-    if key_sum > i:
-        print(f'{i=}')
-    key_sum += i
 
-print(len(my_w))
-key_frase = 'CyberQuest{'
-key_bin = ''
-for c in key_frase:
-    key_bin += '%08d' % (int(bin(ord(c))[2:]))
-# print(w[-1] > p)
-print(len(key_bin))
-key_sum = 0
-for i, b in enumerate(key_bin):
-    key_sum += int(b) * my_w[i] % p_secret
-    key_sum %= p_secret
-my_w = my_w[len(key_bin):]
-print(f'{len(my_w)=}')
-    
-key_frase = '}'
-key_bin = ''
-for c in key_frase:
-    key_bin += '%08d' % (int(bin(ord(c))[2:]))
-# print(w[-1] > p)
-print(len(key_bin))
-_my_w = my_w[::-1]
-for i, b in enumerate(key_bin[::-1]):
-    key_sum += int(b) * _my_w[i] % p_secret
-    key_sum %= p_secret
-my_w = my_w[:len(my_w) - len(key_bin)]
-print(f'{len(my_w)=}')
-    
-chiphr_text -= key_sum
 
-def get_integral_value_combination(list, target):
-    def a(idx, l, r, t):
-        if t == sum(l):
-            r.append(l)
-            
-        elif t < sum(l):
-            return
+def calc(_c, my_w: list):
+    # print(f'{_c=}')
+    if _c > sum(my_w):
+        print('_c is more than sum of my_w')
+        assert False
         
-        for u in range(idx, len(list)):
-            a((u + 1), l + [list[u]], r, t)
-            
-        return r
+    bits = ''
+    for _w in my_w[::-1]:
+        # print(f'{_c=}')
+        # print(f' {_w=}')
+        if _w > _c:
+            bits = '0' + bits
+        else:
+            bits = '1' + bits
+            _c -= _w
+        # print(f'{len(bits)=}')
+        # print(f'{bits=}')
     
-    return a(0, [], [], target)
-
-is_continue = True
-while is_continue:
-    res = get_integral_value_combination(my_w, chiphr_text)
-    if res == None:
-        chiphr_text += p_secret
-        print(f'try again')
-        
+    if _c == 0:
+        print(bits)
+        return True
     else:
-        print(res)
-        is_continue = False
-    
-        
+        return False
+
+for i in range(1, 1958233):
+    is_0 = calc(chiphr_text, my_w)
+    print(f'{i=}')
+    if is_0:
+        print(f'end\n\n{i=}')
+        break
+    chiphr_text += p_secret
+
+calc(chiphr_text*1095843, my_w)
