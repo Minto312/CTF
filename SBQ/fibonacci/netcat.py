@@ -20,7 +20,7 @@ class Netcat:
         self.socket.close()
         
 if __name__ == '__main__':     
-    nc = Netcat('35.78.8.36',38411)
+    nc = Netcat('35.78.8.36',38164)
     r = nc.read().decode()
     print(f'{r=}')
     print(re.findall(r'F\(([0-9]+)\)',r)[-1])

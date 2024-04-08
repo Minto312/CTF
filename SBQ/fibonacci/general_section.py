@@ -39,7 +39,9 @@ def fib(n):
 n_re = re.compile(r'F\(([0-9][0-9]+)\)')
 m_re = re.compile(r'% ([0-9]+)')
 # nc = netcat.Netcat('35.78.8.36',38411) #2
-nc = netcat.Netcat('35.78.8.36',38412) #3
+# nc = netcat.Netcat('35.78.8.36',38412) #3
+nc = netcat.Netcat('35.78.8.36',38154) #3
+
 
 while True:
     r = nc.read()
