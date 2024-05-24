@@ -1,0 +1,1 @@
+key_locationを1周回してcipherと同じ場所で同じ長さのaをencryptさせたら分かる？

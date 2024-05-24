@@ -1,0 +1,7 @@
+
+3  - c
+9  - i
+15 - o
+16 - p
+
+picoCTF{thenumbersmason}

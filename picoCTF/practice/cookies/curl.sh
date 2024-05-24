@@ -1,0 +1,1 @@
+curl http://mercury.picoctf.net:27177/
